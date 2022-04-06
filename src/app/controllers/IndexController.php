@@ -1,12 +1,35 @@
 <?php
 
 use Phalcon\Mvc\Controller;
-
+use GuzzleHttp\Client;
+use GuzzleHttp\Psr7\Stream;
 
 class IndexController extends Controller
 {
     public function indexAction()
     {
+
+
+        $client = new Client();
+
+        // $resource = \GuzzleHttp\Psr7\Utils::tryFopen('http://httpbin.org', 'r');
+        $response = $client->request('GET', 'http://api.weatherapi.com/v1/search.json?key=0bab7dd1bacc418689b143833220304&q=$location');
+        $body = $response->getBody();
+        $code = $response->getStatusCode(); // 200
+        $reason = $response->getReasonPhrase();
+        $bod = (object)json_decode($body, true);
+        echo "<pre>";
+        print_r($bod);
+        die;
+
+
+
+
+
+
+
+
+
         // $url = "http://httpbin.org/post";
 
         // //     // Initialize a CURL session.
