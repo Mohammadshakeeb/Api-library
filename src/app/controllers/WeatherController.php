@@ -139,4 +139,21 @@ class WeatherController extends Controller
         // die;
         $this->view->weather = $bod;
     }
+
+    public function airqualityAction()
+    {
+        $p="&aqi=yes";
+        $location = $_GET['loc'];
+        // echo $location;
+        $client = new Client();
+        $response = $client->request('GET', 'http://api.weatherapi.com/v1/current.json?key=0bab7dd1bacc418689b143833220304&q=' . $location.$p);
+        $body = $response->getBody();
+        $bod = json_decode($body, true);
+
+        // echo "<pre>";
+        // print_r($bod);
+
+        // die;
+        $this->view->weather = $bod;
+    }
 }

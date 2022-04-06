@@ -12,7 +12,7 @@ class IndexController extends Controller
 
         $client = new Client();
 
-        // $resource = \GuzzleHttp\Psr7\Utils::tryFopen('http://httpbin.org', 'r');
+        // $rdadadadesource = \GuzzleHttp\Psr7\Utils::tryFopen('http://httpbin.org', 'r');
         $response = $client->request('GET', 'http://api.weatherapi.com/v1/search.json?key=0bab7dd1bacc418689b143833220304&q=$location');
         $body = $response->getBody();
         $code = $response->getStatusCode(); // 200
@@ -21,6 +21,7 @@ class IndexController extends Controller
         echo "<pre>";
         print_r($bod);
         die;
+
 
 
 
